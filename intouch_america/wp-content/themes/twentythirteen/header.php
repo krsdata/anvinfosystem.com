@@ -42,7 +42,10 @@ $.src="https://v2.zopim.com/?4KaTDCsp3NoYcsLXJFoWKWV4f5MWjAnO";z.t=+new Date;$.
 type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script>
 <!--End of Zendesk Chat Script-->
+ 
+
   </head>
+   <?php wp_head(); ?>
   <body class="woocommerce">
   	<div class="top-bar">
 		<div class="container">

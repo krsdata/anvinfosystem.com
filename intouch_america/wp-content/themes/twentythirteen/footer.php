@@ -84,6 +84,78 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://use.fontawesome.com/a832a5b49f.js"></script>
     <script src="<?php bloginfo('template_directory'); ?>/js/bootstrap.min.js"></script>
+    
+    <script>
+     
+    jQuery(function () {
+    jQuery('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            }
+        }
+        init();
+    });
+});
+</script>
+    
+    
+    
     <script>
     
         jQuery('.toBottom').click(function() {
@@ -116,16 +188,16 @@
     </script>
     <script>
 jQuery( ".contact_button" ).click(function() {
-  jQuery( ".contact_menu" ).toggle( "slow" );
+  jQuery( ".contact_menu" ).toggle();
 });
 </script>
 <script>
 jQuery( ".menu_button" ).click(function() {
-  jQuery( ".menu_menu" ).toggle( "slow" );
+  jQuery( ".menu_menu" ).toggle();
 });
 
 jQuery( ".cart-toggle" ).click(function() {
-  jQuery( ".show-toggle" ).toggle( "slow" );
+  jQuery( ".show-toggle" ).toggle();
 });
 
 
@@ -141,75 +213,133 @@ jQuery( ".cart-toggle" ).click(function() {
 
 
 
-var cart_price = 0;
+
 var sp_cart = 0;
+var check = 0;
+var total = 0;
+
 function myFunction(id,proid,price){
     
      var url = document.location;
-    
-    jQuery('.a').removeClass('active-price');    
-   
-    
-  
-    
-     jQuery('#box'+proid).addClass('active-price');
-     
-      jQuery('#simple_pro').val(proid);
-     
-    cart_price = price; 
-    
-    var num = cart_price.toFixed(2);
-    
-    jQuery("#plan-price").html("$"+num);
-    
-} 
 
+        jQuery('.a').removeClass('active-price');    
+        
+        
+        jQuery('#box'+proid).addClass('active-price');
+         
+        jQuery('#simple_pro').val(proid);
+         
+        total = price; 
+        
+        total = total.toFixed(2);
+        
+        jQuery("#plan-price").html("$"+total);
+        
+        jQuery('.b').removeClass('active-price'); 
+        jQuery('#smart_pro').val('');
+        
+    
+        
+     check = 1;
+}  
+
+ 
 
 function mySecFunction(id,proid,price){
+    
+    if(check=='1'){
     var url = document.location;
     
    
-     jQuery('.b').removeClass('active-price');    
-   
-  
-    jQuery('#box2'+proid).addClass('active-price');
+     if(jQuery('#box2'+proid).hasClass('active-price'))
+       {
+         
+           jQuery('#box2'+proid).removeClass('active-price');
+           jQuery('#smart_pro').val('');
+           
+         
+           
+            jQuery("#plan-price").html("$"+total);
+            
+           
+        }else{
+           
+            jQuery('.b').removeClass('active-price');    
     
-    jQuery('#smart_pro').val(proid);
-    var sp_cart = cart_price+price; 
-    
-    var num = sp_cart.toFixed(2);
-    
-    jQuery("#plan-price").html("$"+num);
-    
-} 
+            jQuery('#box2'+proid).addClass('active-price');
+            
+            jQuery('#smart_pro').val(proid);
+            
+            
+            var spm = parseFloat(total) + parseFloat(price);
+            
+            
+             spm = spm.toFixed(2);
+            
+            jQuery("#plan-price").html("$"+spm);
+            
+        
+           
+       }
+      
+    }else{
+        
+        alert("Please select monthly access plan first");
+    }
 
+} 
+ 
 function addTocart(){
     
      var url = document.location;
      
      var sPlan = jQuery('#simple_pro').val();
      var spPlan = jQuery('#smart_pro').val(); 
+     var line_item = $('select[name="line"] option:selected').val();
    
     
-
-    var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-    
-    jQuery.ajax({
-        type: "POST",
-        url: ajaxurl,
-         data: {'simplepro_id' : sPlan,'smartpro_id' : spPlan},
-        success: function (res) {
-            if (res) {
-                alert(res);
-                  window.location = url+'/phones?simple=' +sPlan+"&smart="+spPlan;
-            }
+    if(sPlan!=''){
+        
+        var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+        
+        if(spPlan!=''){
+            
+                    jQuery.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                     data: {'simplepro_id' : sPlan,'smartpro_id' : spPlan,'line_item' : line_item},
+                    success: function (res) {
+                        if (res) {
+                            
+                              window.location = url+'/phones';
+                        }
+                    }
+                });
+            
+        }else{
+            
+                    jQuery.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                     data: {'simplepro_id' : sPlan,'line_item' : line_item},
+                    success: function (res) {
+                        if (res) {
+                            
+                              window.location = url+'/phones';
+                        }
+                    }
+                });
         }
-    }); 
-    
-    
-    
+        
+    }else{
+        
+       alert('Please select Monthly Plan'); 
+       return false;
+    }
     
 }
+
+
  /*
 function myRejSecFunction(id,proid,price){
    var url = document.location;
@@ -305,6 +435,6 @@ function mySecRejFunction(id,proid){
 }
 */
 </script>
-
+<?php wp_footer(); ?>
   </body>
 </html>

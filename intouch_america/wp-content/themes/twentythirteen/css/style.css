@@ -1408,14 +1408,15 @@ td a.btn.btn-warning {
     top: 8%;
     left: 8%;
 }
-.add-to-cart-btn
-{
-	text-align:center;
-	background:#a92936;
-	padding: 12.5px;
-	width:100%;
-	float:left;
-	color:#fff;
+.add-to-cart-btn {
+    text-align: center;
+    background: #a92936;
+    padding: 12.5px;
+    
+    width: 100%;
+    float: left;
+    color: #fff;
+    border: 0;
 }
 .add-to-cart-btn button {
     display: block;
@@ -2508,3 +2509,200 @@ span.wpcf7-form-control-wrap.acceptance-208
     margin-bottom: -15px;
 }
 
+.current_page_item {
+    background-color:#a92936;
+}
+.current_page_item a {
+    color:#ffffff;
+}
+.current-menu-item a {
+    color: #fff !important;
+}
+.active-price .fa-plus
+{
+display:none;
+
+}
+.active-price .fa-check {
+    display: inline !important;
+    
+}
+.plan-process .container {
+    width: 100%;
+}
+.choose-plan .container {
+    width: 100%;
+}
+.new-pricing .container {
+    width: 100%;
+}
+
+button.cart-toggle {
+    border: 0 !important;
+    background: none;
+    padding: 0;
+    padding: 0px;
+}
+.plan-process {
+    margin-top: 0;
+}
+h2.easylogo {
+    margin: 0;
+}
+.top-bar p a {
+    color: #fff;
+    padding-left: 10px;
+}
+ul.sub-menu {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    /* background: #fff; */
+    width: 200px;
+    background: #f9f9f9;
+    padding: 0 !important;
+    text-align: center;
+}
+.cart-detail h4 {
+    margin-top: 0px;
+}
+.accesories {
+    float: left;
+    width: 100%;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+}
+.acce-pic {
+    float: left;
+    width: 10%;
+    margin-right: 3%;
+}
+.phone-name {
+    float: left;
+    width: 50%;
+}
+.phone-price {
+    float: left;
+    width: 20%;
+}
+.select-acce {
+    width: 17%;
+    float: right;
+    padding-top: 10px;
+}
+
+.active-price .fa-check
+{
+    float:none !important;
+}
+button.cart-toggle:hover {
+    background: none !important;
+    padding: 0 !important;
+}
+.entry-header, .entry-content, .entry-summary, .entry-meta {
+    margin: 0 auto;
+    max-width: 100% !important;
+    width: 100%;
+}
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+    float: left !important;
+    width: 100% !important;
+}
+.woocommerce div.product form.cart .variations label {
+    font-weight: 700;
+    color: #333;
+}
+.woocommerce div.product form.cart .variations td.label {
+    padding-right: 1em;
+    width: 20% !important;
+    float: left !important;
+    text-align:left  !important;
+}
+.woocommerce div.product form.cart .variations td, .woocommerce div.product form.cart .variations th {
+    border: 0;
+    vertical-align: top;
+    line-height: 2em;
+    width: 300px !important;
+    float: left !important;
+    text-align: left !important;
+}
+.woocommerce div.product form.cart .variations select {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    display: inline-block !important;
+    height: 40px !important;
+    margin-right: 1em !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    border-radius: 5px !important;
+}
+button.cart-toggle:active {
+    background: none !important;
+    padding: 0 !important;
+}
+td.wccpf_label {
+    float: left;
+    width: 100% !important;
+    margin: 0 !important;
+}
+tr {
+    float: left !important;
+    width: 100% !important;
+}
+td.wccpf_value {
+    float: left !important;
+    text-align: left !important;
+    width: 100% !important;
+    border: 0 !important;
+}
+ul.wccpf-field-layout-vertical {
+    padding-left: 0 !important;
+}
+table.wccpf_fields_table td.wccpf_label, table.wccpf_fields_table td.wccpf_label label {
+    width: 100% !important;
+    text-align: left !important;
+    float: left;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+ul
+{
+    padding-left:0 !important;
+    margin:0 !important;
+}
+ul.wccpf-field-layout-vertical li {
+    display: inherit !important;
+    float: left;
+    margin-right: 30px;
+}
+.licence_btn:hover {
+    color: #fff;
+    border: none !important;
+    transition: all 0.5s ease-in-out 0s;
+    background: #a92936 !important;
+    text-decoration:none;
+}
+a.licence_btn {
+    width: auto;
+    float: right;
+    text-decoration: none;
+    outline: 0;
+    margin-top: 30px;
+    border:0 !important;
+}
+.woocommerce form .form-row {
+    padding: 15px !important;
+    margin: 0 !important;
+}
+.woocommerce-billing-fields__field-wrapper {
+    float: left;
+    width: 100%;
+}
+.checkout-section .form-group {
+    float: left;
+    width: 50%;
+   
+}

@@ -23,17 +23,21 @@ get_header();
 </div>
             </div>
             <div class="col-sm-4">
-                <div class="due-box">
-                <span>
-                    Due Today
-$30.00   
+            	<div class="due-box">
+            	<span>
+                 	Due Today
+<?php $totalamount = $woocommerce->cart->get_cart_total(); echo $totalamount; 
+
+?>
                 </span>
                 </div>
             
             <div class="due-box2">
-                    <span>
-                    Due Monthly
-$30.00   
+            		<span>
+                 	Due Monthly
+<?php $totalamount = $woocommerce->cart->get_cart_total(); echo $totalamount; 
+
+?>   
                 </span>
             </div>
              <div class="add-to-cart-btn">
@@ -95,6 +99,20 @@ line fees, will be complimentary for
 your first monthly billing cycle. We'll
 apply this credit to your first invoice.</p>
                 </div>
+                
+                <?php 
+    	    
+                global $woocommerce;
+                
+                if($woocommerce->cart->cart_contents_count > 0){
+                
+                ?>
+                
+                <div class="head-cart">
+                    <h3><a href="<?php echo $woocommerce->cart->get_checkout_url() ?>" >Checkout</a></h3>
+                </div>
+                <?php } ?>
+                
             </div>
             </div>
         </div>
@@ -148,11 +166,8 @@ apply this credit to your first invoice.</p>
             
                 while ( $loop->have_posts() ) : $loop->the_post(); 
                 
-                
-                
                 global $product; 
             
-                
                 ?>
                                 
                     
@@ -285,6 +300,27 @@ apply this credit to your first invoice.</p>
             </div>
         </div>
    </div>
+   
+   <div class="container line-dropdown">
+       
+   <div class="row">
+       
+       <div class="col-sm-12">
+           
+            <select name="line" class="form-control">
+                <option value="229">One Line</option>
+                <option value="230">Two Line</option>
+            </select>
+       </div>
+       
+   </div>
+       
+   </div>
+   
+  
+   
+   
+   
    <div class="choose-plan">
     <div class="container">
         <div class="row">
@@ -301,8 +337,9 @@ apply this credit to your first invoice.</p>
                     
                 </div>
                 
-                <input type="hidden" id="simple_pro">
-                <input type="hidden" id="smart_pro">
+                <input type="hidden" id="simple_pro" value="">
+                <input type="hidden" id="smart_pro" value="">
+            
                 
                 <button id="shop" onClick="addTocart()" class="add-to-cart-btn">Continue Shopping</button>
             </div>

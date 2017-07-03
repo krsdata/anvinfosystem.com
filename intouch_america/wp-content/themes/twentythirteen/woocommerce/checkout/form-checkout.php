@@ -9,7 +9,7 @@ get_header();
 	exit;
 }
 
-wc_print_notices();
+
 
 do_action( 'woocommerce_before_checkout_form', $checkout );
 
@@ -28,18 +28,26 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
     </ul>
 </div>
             </div>
-            <div class="col-sm-4">
+           <div class="col-sm-4">
             	<div class="due-box">
             	<span>
                  	Due Today
-$30.00   
+<?php 
+global $woocommerce;
+$totalamount = $woocommerce->cart->get_cart_total(); 
+echo $totalamount; 
+
+?>
                 </span>
                 </div>
             
             <div class="due-box2">
             		<span>
                  	Due Monthly
-$30.00   
+ <?php $totalamount = $woocommerce->cart->get_cart_total(); 
+ echo $totalamount; 
+
+?>
                 </span>
             </div>
             <div class="add-to-cart-btn">
@@ -99,6 +107,19 @@ line fees, will be complimentary for
 your first monthly billing cycle. We'll
 apply this credit to your first invoice.</p>
                 </div>
+                <?php 
+    	    
+                global $woocommerce;
+                
+                if($woocommerce->cart->cart_contents_count > 0){
+                
+                ?>
+                
+                <div class="head-cart">
+                    <h3><a href="<?php echo $woocommerce->cart->get_checkout_url() ?>" >Checkout</a></h3>
+                </div>
+                <?php } ?>
+                
             </div>
             </div>
         </div>
@@ -119,15 +140,20 @@ apply this credit to your first invoice.</p>
 					<div class="contact-info">
 						<h3>Please Fill YOUR BILLING ADDRESS</h3>
 						<?php do_action( 'woocommerce_checkout_billing' ); ?>
-					</div>
+						
+						<p class="colored-text"><a href="#">Why do we need this info?</a><p><b>NOTE:</b> Your name will appear on your invoice above your address.</p></p>
 				
+					</div>
 					
 					<div class="contact-info prefrence-info">
 						<h3>Please Fill YOUR SHIPPING INFORMATION</h3>
 						<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 					</div>
 					</div>
-
+                    <p>* All Express orders completed by 1:00 pm (PDT), Monday – Friday should be shipped the same day. Orders completed 
+after this time will be shipped the following business day. Express orders do not ship on Saturday, Sunday or holidays.</p>
+<p><b>NOTE:</b> Delivery time frames are based on USPS estimates. Shipments aren’t guaranteed
+to arrive within the expressed range.</p>
 					<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
 	<?php endif; ?>

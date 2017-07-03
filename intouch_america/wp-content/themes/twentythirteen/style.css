@@ -3264,3 +3264,16 @@ input.zip-in {
     font-size: 16px !important;
     background: red !important;
 }
+.current-menu-item a {
+    color: #fff !important;
+}
+.active-price .fa-plus
+{
+display:none;
+float:right;
+}
+.active-price .fa-check
+{
+display:block;
+float:right;
+}

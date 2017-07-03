@@ -40,18 +40,22 @@ global $woocommerce;
 			    </ul>
 			</div>
             </div>
-            <div class="col-sm-4">
+           <div class="col-sm-4">
             	<div class="due-box">
             	<span>
                  	Due Today
-$30.00   
+<?php $totalamount = $woocommerce->cart->get_cart_total(); echo $totalamount; 
+
+?>
                 </span>
                 </div>
             
             <div class="due-box2">
             		<span>
                  	Due Monthly
-$30.00   
+<?php $totalamount = $woocommerce->cart->get_cart_total(); echo $totalamount; 
+
+?>   
                 </span>
             </div>
             <div class="add-to-cart-btn">
@@ -111,6 +115,18 @@ line fees, will be complimentary for
 your first monthly billing cycle. We'll
 apply this credit to your first invoice.</p>
                 </div>
+                <?php 
+    	    
+                global $woocommerce;
+                
+                if($woocommerce->cart->cart_contents_count > 0){
+                
+                ?>
+                
+                <div class="head-cart">
+                    <h3><a href="<?php echo $woocommerce->cart->get_checkout_url() ?>" >Checkout</a></h3>
+                </div>
+                <?php } ?>
             </div>
             </div>
         </div>
@@ -272,6 +288,11 @@ echo '$ '.$regular_price;
 
 		<?php endwhile; // end of the loop. ?>
 
+							<div class="form-group">
+								<label for="inputEmail"><h4>Protect Your Device:</h4> </label>
+									<p>Safeguard this device from spills, drops and hardware failures with a protection plan from our partner, SquareTrade.</p>
+							</div>
+							
 	<?php
 		/**
 		 * woocommerce_after_main_content hook.
@@ -285,52 +306,55 @@ echo '$ '.$regular_price;
 						
 						<br/>
 						<div class="contact-info prefrence-info detail-items">
-						<form>
-							<div class="form-group">
-								<label for="inputEmail"><h4>Keep Your Existing Phone Number?</h4> </label>
-								<div class="check-select-prefrence">
-									<span class="button-checkbox check-preference">
-										<button type="button" class="btn btn-lg btn-default" data-color="primary"><i class="state-icon glyphicon glyphicon-unchecked"></i>&nbsp;yes</button>
-										<input type="checkbox" class="hidden" unchecked="">
-									</span>
-								</div>
-								<div class="check-select-prefrence">
-									<span class="button-checkbox check-preference">
-										<button type="button" class="btn btn-lg btn-default" data-color="primary"><i class="state-icon glyphicon glyphicon-unchecked"></i>&nbsp;No</button>
-										<input type="checkbox" class="hidden" unchecked="">
-									</span>
-								</div>
-							</div>
+						
+							<h4>Select Accessories:</h4>
 							
-							<div class="form-group">
-								<label for="inputEmail"><h4>Protect Your Device:</h4> </label>
-									<p>Safeguard this device from spills, drops and hardware failures with a protection plan from our partner, SquareTrade.</p>
-							</div>
-							
-							<div class="form-group">
-								<label for="inputEmail"><h4>I want to protect my device with SquareTrade</h4> </label>
-								<div class="check-select-prefrence">
-									<span class="button-checkbox check-preference">
-										<button type="button" class="btn btn-lg btn-default" data-color="primary"><i class="state-icon glyphicon glyphicon-unchecked"></i>&nbsp;yes  $2.00 Monthly</button>
-										<input type="checkbox" class="hidden" unchecked="">
-									</span>
-								</div>
-								<div class="check-select-prefrence">
-									<span class="button-checkbox check-preference">
-										<button type="button" class="btn btn-lg btn-default" data-color="primary"><i class="state-icon glyphicon glyphicon-unchecked"></i>&nbsp;No, I don't want</button>
-										<input type="checkbox" class="hidden" unchecked="">
-									</span>
-								</div>
-							</div>
-							
-							<p><b>NOTE:</b> You can cancel your protection plan at any time.</p>
+								     
+							 <?php  
+							     
+							     $crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' ); 
+                                 $crosssell_ids=$crosssell_ids[0];
+                                 
+                                 if(count($crosssell_ids)>0){
+                                            $args = array( 'post_type' => 'product', 'posts_per_page' => 10, 'post__in' => $crosssell_ids );
+                                            $loop = new WP_Query( $args );
+                                            while ( $loop->have_posts() ) : $loop->the_post();
+                                            
+                                            global $product; 
+                                            ?>
+                                               <div class="accesories">
+                                                <div class="acce-pic">
+                                                 <?php the_post_thumbnail( 'thumbnail' ); ?>
+                                                </div>
+                                                <div class="phone-name">
+                                                 <h5><?php  the_title(); ?> </h5>
+                                                </div>
+                                                <div class="phone-price">
+                                                 <p>$ <?php echo $product->get_regular_price() ?></p>
+                                                </div>
+                                                <div class="select-acce">
+                                              <?php woocommerce_template_loop_add_to_cart(); ?>
+                                                </div>
+                                            </div>
+                                            
+                                <?php
+                                            endwhile;
+                                 } 
+                                            
+                                            ?>
 							
 							<div class="continue-shoping1">
-								<a href="<?php echo $woocommerce->cart->get_checkout_url(); ?>">Continue Shopping</a>
+							    
+							    <?php 
+							     global $product;
+						
+							     
+							    ?>
+								<a href="<?php echo $woocommerce->cart->get_checkout_url()  ?>" class="licence_btn">CONTINUE</a>
 							</div>
 							
 							
-						</form>
+						
 					</div>
 					</div>
 				</div>

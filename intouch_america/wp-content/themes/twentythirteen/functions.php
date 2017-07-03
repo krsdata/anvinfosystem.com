@@ -29,23 +29,13 @@
  * @see twentythirteen_content_width() for template-specific adjustments.
  */
 
+
 add_action( 'after_setup_theme', 'setup_woocommerce_support' );
 
  function setup_woocommerce_support()
 {
   add_theme_support('woocommerce');
 } 
- 
-function your_function() {
-    if( function_exists('WC') ){
-        WC()->cart->empty_cart();
-    }
-}
-remove_action('wp_logout', 'your_function'); 
- 
- 
- 
- 
  
 add_filter( 'wpcf7_use_really_simple_captcha', '__return_true' );
  
@@ -683,63 +673,7 @@ function twentythirteen_customize_preview_js() {
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
 
-add_filter( 'woocommerce_checkout_fields', 'yourplugin_move_checkout_fields' );
 
-function yourplugin_move_checkout_fields( $fields ) {
-	// Author: apppresser.com
-
-	// Move these around as necessary. You'll see we added email first.
-	$billing_order = array(
-		"billing_email",
-		"billing_first_name", 
-		"billing_last_name", 
-		"billing_company",
-		"billing_address_1", 
-		"billing_address_2", 
-		"billing_postcode", 
-		"billing_country",
-		"billing_state",
-		"billing_phone"
-	);
-
-	// This sets the billing fields in the order above
-	foreach($billing_order as $billing_field) {
-	    $billing_fields[$billing_field] = $fields["billing"][$billing_field];
-	}
-
-	 $billing_fields['ssn'] = array(      
-    	'type'         => 'text',
-        'class'         => array('form-control'),
-        'label'         => __('SSN Last Four'),
-        'placeholder'   => __('SSN'),
-        'required'     => true,
-        );
-	$fields["billing"] = $billing_fields;
-
-	
-
-	// Move these around as necessary
-	$shipping_order = array(
-		"shipping_first_name", 
-		"shipping_last_name", 
-		"shipping_company", 
-		"shipping_address_1", 
-		"shipping_address_2", 
-		"shipping_postcode", 
-		"shipping_country",
-		"shipping_city",
-		"shipping_state"
-	);
-
-	// This sets the shipping fields in the order above
-	foreach($shipping_order as $shipping_field) {
-	    $shipping_fields[$shipping_field] = $fields["shipping"][$shipping_field];
-	}
-
-	$fields["shipping"] = $shipping_fields;
-
-	return $fields;
-}
 
 add_filter('woocommerce_checkout_fields', 'addBootstrapToCheckoutFields' );
 function addBootstrapToCheckoutFields($fields) {
@@ -754,6 +688,7 @@ function addBootstrapToCheckoutFields($fields) {
     }
     return $fields;
 }
+
 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );//ALL tabs
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
@@ -786,15 +721,44 @@ function my_add_plan() {
         $p_id= $_POST['simplepro_id'];
        $woocommerce->cart->add_to_cart($p_id, 1);
        
-        $sp_id= $_POST['smartpro_id'];
-       $woocommerce->cart->add_to_cart($sp_id, 1);
        
-       echo $p_id;
+       if($_POST['smartpro_id']!=''){
+            $sp_id= $_POST['smartpro_id'];
+            $woocommerce->cart->add_to_cart($sp_id, 1);
+       }
+       
+       
+       if($_POST['line_item']!=''){
+           
+           $line = $_POST['line_item'];
+           $woocommerce->cart->add_to_cart($line, 1);
+           
+       }
+       
+       
 	} // end if
+	
+	
 
 } // end my_theme_send_email
 add_action( 'init', 'my_add_plan' ); 
 
-/***************************************************************/
+/****************************Add CUSTOM DATA TO CART***********************************/
 
+
+
+/****************************Add CUSTOM DATA TO CART***********************************/
+
+
+do_action( 'woocommerce_set_cart_cookies', TRUE );
+// Hook after add to cart Added by Atiqur
+add_action( 'woocommerce_add_to_cart' , 'repair_woocommerce_2_2_8_session_add_to_cart');
+
+function repair_woocommerce_2_2_8_session_add_to_cart( ){
+    if ( defined( 'DOING_AJAX' ) ) {
+        wc_setcookie( 'woocommerce_items_in_cart', 1 );
+        wc_setcookie( 'woocommerce_cart_hash', md5( json_encode( WC()->cart->get_cart() ) ) );
+        do_action( 'woocommerce_set_cart_cookies', true );
+    }
+}
 
