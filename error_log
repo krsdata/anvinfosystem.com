@@ -1,0 +1,9 @@
+[04-Apr-2018 04:10:08 UTC] PHP Warning:  getimagesize(): Filename cannot be empty in /home/anvinfosystem/public_html/wp-content/plugins/protect-wp-admin/pwa-class.php on line 271
+[04-Apr-2018 04:12:30 UTC] PHP Warning:  getimagesize(): Filename cannot be empty in /home/anvinfosystem/public_html/wp-content/plugins/protect-wp-admin/pwa-class.php on line 271
+[27-Apr-2018 13:42:20 UTC] PHP Warning:  trim() expects parameter 1 to be string, array given in /home/anvinfosystem/public_html/wp-includes/class-wp-query.php on line 785
+[01-May-2018 00:28:49 UTC] PHP Warning:  trim() expects parameter 1 to be string, array given in /home/anvinfosystem/public_html/wp-includes/class-wp-query.php on line 785
+[27-Jun-2018 01:41:02 UTC] PHP Warning:  mysqli_query(): MySQL server has gone away in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 859
+[27-Jun-2018 01:43:16 UTC] PHP Warning:  mysqli_query(): Error reading result set's header in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 859
+[27-Jun-2018 01:41:02 UTC] PHP Warning:  mysqli_query(): MySQL server has gone away in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[27-Jun-2018 01:43:16 UTC] PHP Warning:  mysqli_query(): Error reading result set's header in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[05-Feb-2019 17:55:14 UTC] PHP Warning:  urldecode() expects parameter 1 to be string, array given in /home/anvinfosystem/public_html/wp-includes/class-wp-query.php on line 2102

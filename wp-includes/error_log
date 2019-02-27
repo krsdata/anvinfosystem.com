@@ -1,0 +1,4 @@
+[15-Mar-2018 01:40:05 Asia/Calcutta] PHP Fatal error:  Class 'Walker' not found in /home/anvinfosystem/public_html/wp-includes/class-walker-nav-menu.php on line 17
+[23-Mar-2018 11:05:17 Asia/Calcutta] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/anvinfosystem/public_html/wp-includes/locale.php on line 10
+[19-Nov-2018 21:14:12 Asia/Calcutta] PHP Fatal error:  Call to undefined function is_robots() in /home/anvinfosystem/public_html/wp-includes/template-loader.php on line 28
+[01-Feb-2019 01:57:20 Asia/Calcutta] PHP Fatal error:  Class 'Walker' not found in /home/anvinfosystem/public_html/wp-includes/class-walker-nav-menu.php on line 17

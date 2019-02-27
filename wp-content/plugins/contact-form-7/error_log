@@ -1,0 +1,3 @@
+[02-Sep-2018 16:17:50 Asia/Calcutta] PHP Fatal error:  Call to undefined function plugin_basename() in /home/anvinfosystem/public_html/wp-content/plugins/contact-form-7/wp-contact-form-7.php on line 19
+[29-Sep-2018 20:10:48 Asia/Calcutta] PHP Fatal error:  Call to undefined function plugin_basename() in /home/anvinfosystem/public_html/wp-content/plugins/contact-form-7/wp-contact-form-7.php on line 19
+[01-Feb-2019 18:23:12 Asia/Calcutta] PHP Fatal error:  Call to undefined function plugin_basename() in /home/anvinfosystem/public_html/wp-content/plugins/contact-form-7/wp-contact-form-7.php on line 19
