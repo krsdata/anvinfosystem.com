@@ -7,3 +7,12 @@
 [27-Jun-2018 01:41:02 UTC] PHP Warning:  mysqli_query(): MySQL server has gone away in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
 [27-Jun-2018 01:43:16 UTC] PHP Warning:  mysqli_query(): Error reading result set's header in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
 [05-Feb-2019 17:55:14 UTC] PHP Warning:  urldecode() expects parameter 1 to be string, array given in /home/anvinfosystem/public_html/wp-includes/class-wp-query.php on line 2102
+[04-Jun-2019 04:43:22 UTC] PHP Warning:  Error while sending QUERY packet. PID=8771 in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[04-Jun-2019 04:43:41 UTC] PHP Warning:  Error while sending QUERY packet. PID=8839 in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[04-Jun-2019 10:33:32 UTC] PHP Warning:  Error while sending QUERY packet. PID=18610 in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[04-Jun-2019 10:34:28 UTC] PHP Warning:  Error while sending QUERY packet. PID=18768 in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[04-Jun-2019 10:34:42 UTC] PHP Warning:  Error while sending QUERY packet. PID=18725 in /home/anvinfosystem/public_html/wp-includes/wp-db.php on line 1942
+[08-Jun-2019 20:54:59 UTC] PHP Warning:  require(ABSPATHwp-includes/load.php): failed to open stream: No such file or directory in /home/anvinfosystem/public_html/wp-settings.php on line 19
+[08-Jun-2019 20:54:59 UTC] PHP Fatal error:  require(): Failed opening required 'ABSPATHwp-includes/load.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/anvinfosystem/public_html/wp-settings.php on line 19
+[08-Jun-2019 21:57:49 UTC] PHP Warning:  require(ABSPATHwp-includes/load.php): failed to open stream: No such file or directory in /home/anvinfosystem/public_html/wp-settings.php on line 19
+[08-Jun-2019 21:57:49 UTC] PHP Fatal error:  require(): Failed opening required 'ABSPATHwp-includes/load.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/anvinfosystem/public_html/wp-settings.php on line 19
